@@ -1,4 +1,4 @@
-# Toshiba Sattelite S50B-N-15-macOS
+# Toshiba Sattelite S50B-N-15 macOS
 #### This repository contains scripts and ACPI patches for Toshiba Sattelite S50B-N-15 (maybe and some others in the same series) to get macOS installed and running.
 
 It uses (and depends on) scripts & tools already existing in https://github.com/the-braveknight/macos-tools.
