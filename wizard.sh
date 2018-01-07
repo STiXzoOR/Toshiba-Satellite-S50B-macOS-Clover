@@ -1,44 +1,71 @@
 #!/bin/bash
 
-function downloadTools() {
+downloads=Downloads
+
+kexts_dir=$downloads/Kexts
+kexts_downloads=$downloads/Kexts.txt
+kexts_exceptions=Kexts-Exceptions.txt
+
+tools_dir=$downloads/Tools
+tools_downloads=$downloads/Tools.txt
+
+hotpatch_dir=$downloads/Hotpatch
+hotpatch_downloads=$downloads/Hotpatch.txt
+
+hda_codec=CX20756
+hda_resources=Resources_$hda_codec
+
+ps2_trackpad=$(ioreg -n PS2Q -arxw0 > /tmp/ps2_trackpad.plist && /usr/libexec/PlistBuddy -c "Print :0:name" /tmp/ps2_trackpad.plist)
+
+if [[ ! -d macos-tools ]]; then
     echo "Downloading latest macos-tools..."
     rm -Rf macos-tools && git clone https://github.com/the-braveknight/macos-tools --quiet
-}
-
-if [[ ! -d macos-tools ]]; then downloadTools; fi
+fi
 
 case "$1" in
     --download-tools)
-        rm -Rf Downloads/Tools && mkdir Downloads/Tools && macos-tools/bitbucket_download.sh -p Downloads/Tools.plist -o Downloads/Tools
+        rm -Rf $tools_dir && mkdir $tools_dir
+        while read tool; do macos-tools/bitbucket_download.sh -a RehabMan -n "$tool" -o $tools_dir; done < $tools_downloads
     ;;
     --download-kexts)
-        rm -Rf Downloads/Kexts && mkdir Downloads/Kexts && macos-tools/bitbucket_download.sh -p Downloads/Kexts.plist -o Downloads/Kexts
+        rm -Rf $kexts_dir && mkdir $kexts_dir
+        while read kext; do macos-tools/bitbucket_download.sh -a RehabMan -n "$kext" -o $kexts_dir; done < $kexts_downloads
     ;;
     --download-hotpatch)
-        rm -Rf Downloads/Hotpatch && mkdir Downloads/Hotpatch && macos-tools/hotpatch_download.sh -p Downloads/Hotpatch.plist -o Downloads/Hotpatch
+        rm -Rf $hotpatch_dir && mkdir $hotpatch_dir
+        while read ssdt; do macos-tools/hotpatch_download.sh -o $hotpatch_dir "$ssdt"; done < $hotpatch_downloads
     ;;
     --unarchive-downloads)
-        macos-tools/unarchive_file.sh -d Downloads
+        macos-tools/unarchive_file.sh -d $downloads
     ;;
     --install-apps)
-        macos-tools/install_app.sh -d Downloads
+        macos-tools/install_app.sh -d $downloads
     ;;
     --install-binaries)
-        macos-tools/install_binary.sh -d Downloads
+        macos-tools/install_binary.sh -d $downloads
     ;;
     --install-kexts)
-        macos-tools/install_kext.sh -d Downloads -e Kext-Exceptions.plist
+        macos-tools/install_kext.sh -d $downloads -e $(cat $kexts_exceptions)
+        $0 --install-hdainjector
+        $0 --install-backlightinjector
+        $0 --install-ps2kext
+        $0 --install-sdkext
     ;;
     --install-hdainjector)
-        macos-tools/create_hdainjector.sh -c CX20756 -r Resources_CX20756
-        macos-tools/install_kext.sh AppleHDA_CX20756.kext
+        macos-tools/create_hdainjector.sh -c $hda_codec -r $hda_resources
+        macos-tools/install_kext.sh AppleHDA_$hda_codec.kext
     ;;
     --install-backlightinjector)
         macos-tools/install_kext.sh Kexts/AppleBacklightInjector.kext
     ;;
     --install-ps2kext)
-        macos-tools/install_kext.sh Kexts/ApplePS2SmartTouchPad.kext
-        sudo rm -Rf /Library/Extensions/VoodooPS2Controller.kext
+        if [[ "$ps2_trackpad" == *"SYN"* ]]; then
+            macos-tools/install_kext.sh $kexts_dir/RehabMan-Voodoo-*/Release/VoodooPS2Controller.kext
+            sudo rm -Rf /Library/Extensions/ApplePS2SmartTouchPad.kext
+        else
+            macos-tools/install_kext.sh Kexts/ApplePS2SmartTouchPad.kext
+            sudo rm -Rf /Library/Extensions/VoodooPS2Controller.kext
+        fi
     ;;
     --install-sdkext)
         macos-tools/install_kext.sh Kexts/Sinetek-rtsx.kext
@@ -50,7 +77,7 @@ case "$1" in
         macos-tools/install_config.sh config.plist
     ;;
     --update-config)
-        macos-tools/update_config.sh config.plist
+        macos-tools/install_config.sh -u config.plist
     ;;
     --download-requirements)
         $0 --download-kexts
@@ -62,10 +89,6 @@ case "$1" in
         $0 --install-binaries
         $0 --install-apps
         $0 --install-kexts
-        $0 --install-backlightinjector
-        $0 --install-hdainjector
-        $0 --install-ps2kext
-        $0 --install-sdkext
         $0 --update-kernelcache
     ;;
 esac
