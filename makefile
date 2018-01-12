@@ -32,7 +32,7 @@ install_rehabman: $(RehabMan)
 	cp $(RehabMan) $(EFIDIR)/EFI/CLOVER/ACPI/patched
 
 .PHONY: install
-install_z50: $(HACK)
+install: $(HACK)
 	$(eval EFIDIR:=$(shell macos-tools/mount_efi.sh))
 	rm -f $(EFIDIR)/EFI/CLOVER/ACPI/patched/*.aml
 	cp $(HACK) $(EFIDIR)/EFI/CLOVER/ACPI/patched
