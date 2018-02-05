@@ -19,7 +19,7 @@ hotpatch_downloads=$downloads/Hotpatch.txt
 hda_codec=CX20756
 hda_resources=Resources_$hda_codec
 
-ps2_trackpad=$(ioreg -n PS2M -arxw0 > /tmp/ps2_trackpad.plist && /usr/libexec/PlistBuddy -c "Print :0:name" /tmp/ps2_trackpad.plist)
+ps2_trackpad=$(ioreg -n PS2Q -arxw0 > /tmp/ps2_trackpad.plist && /usr/libexec/PlistBuddy -c "Print :0:name" /tmp/ps2_trackpad.plist)
 
 if [[ ! -d macos-tools ]]; then
     echo "Downloading latest macos-tools..."
