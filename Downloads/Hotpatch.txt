@@ -3,5 +3,5 @@ SSDT-HDEF.dsl
 SSDT-HDAU.dsl
 SSDT-PNLF.dsl
 SSDT-XOSI.dsl
-SSDT-PluginType1.dsl
-SSDT-Disable_EHCI.dsl
+SSDT-XCPM.dsl
+SSDT-DEHCI.dsl
