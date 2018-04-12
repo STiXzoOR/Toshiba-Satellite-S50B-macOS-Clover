@@ -6,5 +6,3 @@ os-x-acpi-battery-driver
 os-x-brcmpatchram
 os-x-usb-inject-all
 os-x-eapd-codec-commander
-lilu
-intelgraphicsfixup
