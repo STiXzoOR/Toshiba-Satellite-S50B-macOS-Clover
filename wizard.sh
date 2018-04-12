@@ -42,6 +42,7 @@ case "$1" in
 
         # Temporary github download logic
         macos-tools/github_download.sh -r https://github.com/vit9696/Lilu/releases -o $kexts_dir/vit9696-Lilu.zip
+        macos-tools/github_download.sh -r https://github.com/vit9696/Shiki/releases -o $kexts_dir/vit9696-Shiki.zip
         macos-tools/github_download.sh -r https://github.com/lvs1974/IntelGraphicsFixup/releases -o $kexts_dir/lvs1974-IntelGraphicsFixup.zip
     ;;
     --download-hotpatch)
@@ -63,7 +64,6 @@ case "$1" in
         $0 --install-backlightinjector
         $0 --install-ps2kext
         $0 --install-sdkext
-        $0 --install-shiki
     ;;
     --install-essential-kexts)
         macos-tools/install_kext.sh -i $(for kext in $(cat $essential_kexts); do findKext $kext; done)
@@ -86,9 +86,6 @@ case "$1" in
     ;;
     --install-sdkext)
         macos-tools/install_kext.sh Kexts/Sinetek-rtsx.kext
-    ;;
-    --install-shiki)
-        macos-tools/install_kext.sh Kexts/Shiki.kext
     ;;
     --update-kernelcache)
         sudo kextcache -i /
