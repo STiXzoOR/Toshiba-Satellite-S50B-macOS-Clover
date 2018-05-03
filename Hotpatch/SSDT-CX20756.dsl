@@ -1,7 +1,9 @@
 // CodecCommander.kext configuration to fix external mic issues
 
-//DefinitionBlock ("", "SSDT", 2, "hack", "CX20756", 0)
-//{
+#ifndef NO_DEFINITIONBLOCK
+DefinitionBlock ("", "SSDT", 2, "hack", "CX20756", 0)
+{
+#endif
     External(_SB.PCI0.HDEF, DeviceObj)
     Name(_SB.PCI0.HDEF.RMCF, Package(0x02)
     {
@@ -34,5 +36,7 @@
             "Update Nodes", ">n"
         }
     })
-//}
+#ifndef NO_DEFINITIONBLOCK
+}
+#endif
 //EOF

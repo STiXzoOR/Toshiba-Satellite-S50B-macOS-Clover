@@ -27,13 +27,21 @@ DefinitionBlock ("", "SSDT", 2, "hack", "S50B", 0)
         //
         // Ones: Default will be used (0x710 for Ivy/Sandy, 0xad9 for Haswell/Broadwell)
         // Other values: must match framebuffer
-        Name(LMAX, 0xad9)
+        //Name(LMAX, 0xad9)
     }
     
-    #include "SSDT-PS2K.dsl"
+    #define NO_DEFINITIONBLOCK
+    #include "Downloads/SSDT-IGPU.dsl"
+    #include "Downloads/SSDT-PNLF.dsl"
+    #include "Downloads/SSDT-HDEF.dsl"
+    #include "Downloads/SSDT-HDAU.dsl"
+    #include "Downloads/SSDT-DEHCI.dsl"
+    #include "Downloads/SSDT-XCPM.dsl"
+    #include "Downloads/SSDT-XOSI.dsl"
     #include "SSDT-UIAC.dsl"
-    #include "SSDT-GPRW.dsl"
-    #include "SSDT-DGPU.dsl"
     #include "SSDT-CX20756.dsl"
+    #include "SSDT-DGPU.dsl"
+    #include "SSDT-PS2K.dsl"
+    #include "SSDT-GPRW.dsl"
 }
 //EOF

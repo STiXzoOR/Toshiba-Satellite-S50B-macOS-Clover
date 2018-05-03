@@ -1,7 +1,9 @@
 // USB configuration
 
-//DefinitionBlock ("", "SSDT", 2, "hack", "usb", 0)
-//{
+#ifndef NO_DEFINITIONBLOCK
+DefinitionBlock ("", "SSDT", 2, "hack", "usb", 0)
+{
+#endif
 
 //
 // USB Power Propertes for Sierra
@@ -71,5 +73,7 @@
             },
         })
     }
-//}
+#ifndef NO_DEFINITIONBLOCK
+}
+#endif
 //EOF

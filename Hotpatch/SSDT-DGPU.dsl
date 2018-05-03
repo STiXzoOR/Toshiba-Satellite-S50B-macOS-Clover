@@ -1,7 +1,9 @@
 // For disabling the discrete GPU
 
-//DefinitionBlock("", "SSDT", 2, "hack", "D-DGPU", 0)
-//{
+#ifndef NO_DEFINITIONBLOCK
+DefinitionBlock("", "SSDT", 2, "hack", "DGPU", 0)
+{
+#endif
     External(_SB.PCI0.RP05.PXSX._OFF, MethodObj)
 
     Device(RMD1)
@@ -13,5 +15,7 @@
             If (CondRefOf(\_SB.PCI0.RP05.PXSX._OFF)) { \_SB.PCI0.RP05.PXSX._OFF() }
         }
     }
-//}
+#ifndef NO_DEFINITIONBLOCK
+}
+#endif
 //EOF

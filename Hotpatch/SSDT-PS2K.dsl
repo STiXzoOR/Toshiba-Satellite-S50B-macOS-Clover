@@ -1,8 +1,10 @@
 // Keyboard configuration
 // Only necessary if using ApplePS2SmartTouchpad
 
+#ifndef NO_DEFINITIONBLOCK
 //DefinitionBlock("", "SSDT", 2, "hack", "PS2K", 0)
-//{
+{
+#endif
     External(_SB.PCI0.LPCB.PS2K, DeviceObj)
     External(_SB.PCI0.LPCB.EC, DeviceObj)
 
@@ -22,5 +24,7 @@
             Notify (\_SB.PCI0.LPCB.PS2K, 0x10) // For ApplePS2SmartTouchPad.kext (by EMlyDinEsH)
         }
     }
-//}
+#ifndef NO_DEFINITIONBLOCK
+}
+#endif
 //EOF
