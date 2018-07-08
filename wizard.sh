@@ -29,6 +29,18 @@ if [[ ! -d macos-tools ]]; then
     rm -Rf macos-tools && git clone https://github.com/the-braveknight/macos-tools --quiet
 fi
 
+function showOptions() {
+    echo "--download-requirements,  Download required kexts, hotpatches and tools."
+    echo "--install-downloads,  Install kext(s) and tool(s)."
+    echo "--install-config,  Install the config to EFI/CLOVER."
+    echo "--update-config,  Update the existing config in EFI/CLOVER."
+    echo "--update-kernelcache,  Update kernel cache."
+    echo "-i,  inlude custom kexts while using --download-requirements option."
+    echo "-h,  Show this help message."
+    echo "Usage: $(basename $0) [--download-requirements -i <Author exact name:Kext(s) exact name> separated by |]"
+    echo "Example: $(basename $0) --download-requirements -i 'lvs1974:HibernationFixup,AirportBrcmFixup|vit9696:Lilu,AppleALC'"
+}
+
 function findKext() {
     find $kexts_dir $local_kexts_dir -name $1 -not -path \*/PlugIns/* -not -path \*/Debug/*
 }
@@ -55,9 +67,28 @@ case "$1" in
         macos-tools/bitbucket_download.sh -a RehabMan -n os-x-eapd-codec-commander -o $kexts_dir
 
         # GitHub kexts
-        macos-tools/github_download.sh -u vit9696 -r Lilu -o $kexts_dir
+        macos-tools/github_download.sh -u acidanthera -r Lilu -o $kexts_dir
         macos-tools/github_download.sh -u vit9696 -r Shiki -o $kexts_dir
         macos-tools/github_download.sh -u lvs1974 -r IntelGraphicsFixup -o $kexts_dir
+        subcommand=$1; shift
+        while getopts ":i:" option; do
+            case $option in
+            i)
+                include_kexts=$OPTARG
+            ;;
+            ?)
+                showOptions
+                exit 0
+            ;;
+            esac
+        done
+        IFS="|" read -ra myArr <<< "$include_kexts"
+        for author_kexts in "${myArr[@]}"; do
+            IFS=":" read author kexts <<< "$author_kexts"
+            for kext_name in $(echo $kexts | tr "," "\n"); do
+                macos-tools/github_download.sh -u $author -r $kext_name -o $kexts_dir
+            done
+        done
     ;;
     --download-hotpatch)
         rm -Rf $hotpatch_dir && mkdir -p $hotpatch_dir
@@ -121,7 +152,7 @@ case "$1" in
         macos-tools/install_config.sh -u config.plist
     ;;
     --download-requirements)
-        $0 --download-kexts
+        $0 --download-kexts $2 $3
         $0 --download-tools
         $0 --download-hotpatch
     ;;
