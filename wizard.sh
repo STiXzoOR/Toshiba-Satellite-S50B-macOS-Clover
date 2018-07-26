@@ -38,7 +38,7 @@ function showOptions() {
     echo "-i,  inlude custom kexts while using --download-requirements option."
     echo "-h,  Show this help message."
     echo "Usage: $(basename $0) [--download-requirements -i <Author exact name:Kext(s) exact name> separated by |]"
-    echo "Example: $(basename $0) --download-requirements -i 'lvs1974:HibernationFixup,AirportBrcmFixup|vit9696:Lilu,AppleALC'"
+    echo "Example: $(basename $0) --download-requirements -i 'lvs1974:HibernationFixup,AirportBrcmFixup|acidanthera:Lilu,AppleALC'"
 }
 
 function findKext() {
@@ -68,8 +68,8 @@ case "$1" in
 
         # GitHub kexts
         macos-tools/github_download.sh -u acidanthera -r Lilu -o $kexts_dir
-        macos-tools/github_download.sh -u vit9696 -r Shiki -o $kexts_dir
-        macos-tools/github_download.sh -u lvs1974 -r IntelGraphicsFixup -o $kexts_dir
+        macos-tools/github_download.sh -u acidanthera -r WhateverGreen -o $kexts_dir
+
         subcommand=$1; shift
         while getopts ":i:" option; do
             case $option in
@@ -101,23 +101,25 @@ case "$1" in
         macos-tools/hotpatch_download.sh -o $hotpatch_dir SSDT-XCPM.dsl
         macos-tools/hotpatch_download.sh -o $hotpatch_dir SSDT-DEHCI.dsl
     ;;
-    --unarchive-downloads)
-        macos-tools/unarchive_file.sh -d $downloads
-    ;;
     --install-apps)
-        macos-tools/install_app.sh -d $downloads
+        macos-tools/unarchive_file.sh -d $tools_dir
+        macos-tools/install_app.sh -d $tools_dir
     ;;
     --install-binaries)
-        macos-tools/install_binary.sh -d $downloads
+        macos-tools/unarchive_file.sh -d $tools_dir
+        macos-tools/install_binary.sh -d $tools_dir
     ;;
     --install-kexts)
-        macos-tools/install_kext.sh -d $downloads -e $kexts_exceptions
+        macos-tools/unarchive_file.sh -d $kexts_dir
+        macos-tools/install_kext.sh -d $kexts_dir -e $kexts_exceptions
         $0 --install-hdainjector
         $0 --install-backlightinjector
         $0 --install-ps2kext
         $0 --install-sdkext
+        $0 --update-kernelcache
     ;;
     --install-essential-kexts)
+        macos-tools/unarchive_file.sh -d $kexts_dir
         macos-tools/install_kext.sh -i $(findKext FakeSMC.kext)
         macos-tools/install_kext.sh -i $(findKext RealtekRTL8111.kext)
         macos-tools/install_kext.sh -i $(findKext USBInjectAll.kext)
@@ -127,11 +129,11 @@ case "$1" in
         macos-tools/install_kext.sh -i $(findKext $ps2_kext)
     ;;
     --install-hdainjector)
-        macos-tools/create_hdainjector.sh -c $hda_codec -r $hda_resources
-        macos-tools/install_kext.sh AppleHDA_$hda_codec.kext
+        macos-tools/create_hdainjector.sh -c $hda_codec -r $hda_resources -o $local_kexts_dir
+        macos-tools/install_kext.sh $local_kexts_dir/AppleHDA_$hda_codec.kext
     ;;
     --install-backlightinjector)
-        macos-tools/install_kext.sh Kexts/AppleBacklightInjector.kext
+        macos-tools/install_kext.sh $local_kexts_dir/AppleBacklightInjector.kext
     ;;
     --install-ps2kext)
         sudo rm -Rf /Library/Extensions/ApplePS2SmartTouchPad.kext
@@ -140,7 +142,7 @@ case "$1" in
         macos-tools/install_kext.sh $(findKext $ps2_kext)
     ;;
     --install-sdkext)
-        macos-tools/install_kext.sh Kexts/Sinetek-rtsx.kext
+        macos-tools/install_kext.sh $local_kexts_dir/Sinetek-rtsx.kext
     ;;
     --update-kernelcache)
         sudo kextcache -i /
@@ -151,17 +153,21 @@ case "$1" in
     --update-config)
         macos-tools/install_config.sh -u config.plist
     ;;
+    --update)
+        echo "Checking for updates..."
+        git stash --quiet && git pull
+        echo "Checking for macos-tools updates..."
+        cd macos-tools && git stash --quiet && git pull && cd ..
+    ;;
     --download-requirements)
         $0 --download-kexts $2 $3
         $0 --download-tools
         $0 --download-hotpatch
     ;;
     --install-downloads)
-        $0 --unarchive-downloads
         $0 --install-binaries
         $0 --install-apps
-        $0 --install-kexts
         $0 --install-essential-kexts
-        $0 --update-kernelcache
+        $0 --install-kexts
     ;;
 esac
