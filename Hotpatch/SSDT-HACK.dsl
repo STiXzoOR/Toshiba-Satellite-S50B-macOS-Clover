@@ -10,7 +10,7 @@ DefinitionBlock ("", "SSDT", 2, "hack", "S50B", 0)
         //
         // The value here will be used to inject layout-id for HDEF and HDAU
         // If set to Ones, no audio injection will be done.
-        Name(AUDL, 2)
+        //Name(AUDL, 2)
 
         // IGPI: Override for ig-platform-id (or snb-platform-id).
         // Will be used if non-zero, and not Ones
@@ -33,10 +33,9 @@ DefinitionBlock ("", "SSDT", 2, "hack", "S50B", 0)
     #define NO_DEFINITIONBLOCK
     #include "Downloads/SSDT-IGPU.dsl"
     #include "Downloads/SSDT-PNLF.dsl"
-    #include "Downloads/SSDT-HDEF.dsl"
     #include "Downloads/SSDT-HDAU.dsl"
     #include "Downloads/SSDT-DEHCI.dsl"
-    #include "Downloads/SSDT-XCPM.dsl"
+    //#include "Downloads/SSDT-XCPM.dsl"
     #include "Downloads/SSDT-XOSI.dsl"
     #include "SSDT-UIAC.dsl"
     #include "SSDT-CX20756.dsl"

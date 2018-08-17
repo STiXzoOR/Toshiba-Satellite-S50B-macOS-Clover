@@ -7,7 +7,7 @@ downloads=Downloads
 local_kexts_dir=Kexts
 kexts_dir=$downloads/Kexts
 
-kexts_exceptions="Sensors|FakePCIID_BCM57XX|FakePCIID_Intel_GbX|FakePCIID_Intel_HDMI|FakePCIID_Intel_HD|FakePCIID_XHCIMux|FakePCIID_AR9280_as_AR946x|BrcmFirmwareData|PatchRAM.kext|NonPatchRAM2.kext|PS2"
+kexts_exceptions="Sensors|FakePCIID_BCM57XX|FakePCIID_Intel_GbX|FakePCIID_Intel_HDMI|FakePCIID_Intel_HD_Graphics|FakePCIID_XHCIMux|FakePCIID_AR9280_as_AR946x|BrcmFirmwareData|PatchRAM.kext|NonPatchRAM2.kext|PS2"
 
 tools_dir=$downloads/Tools
 
@@ -94,11 +94,9 @@ case "$1" in
         rm -Rf $hotpatch_dir && mkdir -p $hotpatch_dir
 
         macos-tools/hotpatch_download.sh -o $hotpatch_dir SSDT-IGPU.dsl
-        macos-tools/hotpatch_download.sh -o $hotpatch_dir SSDT-HDEF.dsl
         macos-tools/hotpatch_download.sh -o $hotpatch_dir SSDT-HDAU.dsl
         macos-tools/hotpatch_download.sh -o $hotpatch_dir SSDT-PNLF.dsl
         macos-tools/hotpatch_download.sh -o $hotpatch_dir SSDT-XOSI.dsl
-        macos-tools/hotpatch_download.sh -o $hotpatch_dir SSDT-XCPM.dsl
         macos-tools/hotpatch_download.sh -o $hotpatch_dir SSDT-DEHCI.dsl
     ;;
     --install-apps)
@@ -120,13 +118,10 @@ case "$1" in
     ;;
     --install-essential-kexts)
         macos-tools/unarchive_file.sh -d $kexts_dir
-        macos-tools/install_kext.sh -i $(findKext FakeSMC.kext)
-        macos-tools/install_kext.sh -i $(findKext RealtekRTL8111.kext)
-        macos-tools/install_kext.sh -i $(findKext USBInjectAll.kext)
-        macos-tools/install_kext.sh -i $(findKext ACPIBatteryManager.kext)
-        macos-tools/install_kext.sh -i $(findKext FakePCIID.kext)
-        macos-tools/install_kext.sh -i $(findKext FakePCIID_Broadcom_WiFi.kext)
-        macos-tools/install_kext.sh -i $(findKext $ps2_kext)
+        EFI=$(macos-tools/mount_efi.sh)
+        kext_dest=$EFI/EFI/CLOVER/kexts/Other
+        rm -Rf $kext_dest/*.kext
+        macos-tools/install_kext.sh -s $kext_dest $(findKext FakeSMC.kext) $(findKext RealtekRTL8111.kext) $(findKext FakePCIID.kext) $(findKext FakePCIID_Broadcom_WiFi.kext) $(findKext USBInjectAll.kext) $(findKext ACPIBatteryManager.kext) $(findKext $ps2_kext)
     ;;
     --install-hdainjector)
         macos-tools/create_hdainjector.sh -c $hda_codec -r $hda_resources -o $local_kexts_dir
