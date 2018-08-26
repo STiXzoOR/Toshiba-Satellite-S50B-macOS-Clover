@@ -13,6 +13,8 @@ tools_dir=$downloads/Tools
 
 hotpatch_dir=Hotpatch/Downloads
 
+themes_dir=Themes
+
 hda_codec=CX20756
 hda_resources=Resources_$hda_codec
 
@@ -93,8 +95,6 @@ case "$1" in
     --download-hotpatch)
         rm -Rf $hotpatch_dir && mkdir -p $hotpatch_dir
 
-        macos-tools/hotpatch_download.sh -o $hotpatch_dir SSDT-IGPU.dsl
-        macos-tools/hotpatch_download.sh -o $hotpatch_dir SSDT-HDAU.dsl
         macos-tools/hotpatch_download.sh -o $hotpatch_dir SSDT-PNLF.dsl
         macos-tools/hotpatch_download.sh -o $hotpatch_dir SSDT-XOSI.dsl
         macos-tools/hotpatch_download.sh -o $hotpatch_dir SSDT-DEHCI.dsl
@@ -144,6 +144,16 @@ case "$1" in
     ;;
     --install-config)
         macos-tools/install_config.sh config.plist
+        $0 --install-theme
+    ;;
+    --install-initial-config)
+        macos-tools/install_config.sh config_install.plist
+        $0 --install-theme
+    ;;
+    --install-theme)
+        EFI=$(macos-tools/mount_efi.sh)
+        themes_dest=$EFI/EFI/CLOVER/themes
+        cp -r $themes_dir/HexagonDark $themes_dest
     ;;
     --update-config)
         macos-tools/install_config.sh -u config.plist
