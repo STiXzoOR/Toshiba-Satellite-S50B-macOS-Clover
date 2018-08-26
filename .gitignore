@@ -1,4 +1,5 @@
 .DS_Store
+config_UNMASKED.plist
 Kexts/AppleHDA*
 Build/*.aml
 Downloads/Kexts
