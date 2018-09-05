@@ -29,20 +29,6 @@
 			<array>
 				<dict>
 					<key>Comment</key>
-					<string>change HECI to IMEI</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>
-					SEVDSQ==
-					</data>
-					<key>Replace</key>
-					<data>
-					SU1FSQ==
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
 					<string>change Method(GPRW,2,S) to XPRW</string>
 					<key>Disabled</key>
 					<false/>
@@ -183,20 +169,6 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change H_EC to EC</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>
-					SF9FQw==
-					</data>
-					<key>Replace</key>
-					<data>
-					RUNfXw==
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
 					<string>change EHC1 to EH01</string>
 					<key>Disabled</key>
 					<false/>
@@ -249,6 +221,20 @@
 					<key>Replace</key>
 					<data>
 					SERBVQ==
+					</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>Change Method(UPC,0,N) to XUPC</string>
+					<key>Disabled</key>
+					<true/>
+					<key>Find</key>
+					<data>
+					X1VQQwA=
+					</data>
+					<key>Replace</key>
+					<data>
+					WFVQQwA=
 					</data>
 				</dict>
 			</array>
@@ -396,7 +382,7 @@
 				<key>Device</key>
 				<string>ATI</string>
 				<key>Disabled</key>
-				<false/>
+				<true/>
 				<key>Key</key>
 				<string>name</string>
 				<key>Value</key>
@@ -410,7 +396,7 @@
 				<key>Device</key>
 				<string>ATI</string>
 				<key>Disabled</key>
-				<false/>
+				<true/>
 				<key>Key</key>
 				<string>IOName</string>
 				<key>Value</key>
@@ -422,7 +408,7 @@
 				<key>Device</key>
 				<string>ATI</string>
 				<key>Disabled</key>
-				<false/>
+				<true/>
 				<key>Key</key>
 				<string>class-code</string>
 				<key>Value</key>
@@ -436,7 +422,7 @@
 				<key>Device</key>
 				<string>ATI</string>
 				<key>Disabled</key>
-				<false/>
+				<true/>
 				<key>Key</key>
 				<string>vendor-id</string>
 				<key>Value</key>
@@ -450,7 +436,7 @@
 				<key>Device</key>
 				<string>ATI</string>
 				<key>Disabled</key>
-				<false/>
+				<true/>
 				<key>Key</key>
 				<string>device-id</string>
 				<key>Value</key>
@@ -986,12 +972,6 @@
 		<string>0x28</string>
 		<key>CsrActiveConfig</key>
 		<string>0x67</string>
-		<key>MLB</key>
-		<string>XX-MASKED-XX</string>
-		<key>ROM</key>
-		<data>
-		AAAKAA0A
-		</data>
 	</dict>
 	<key>SMBIOS</key>
 	<dict>
@@ -1005,8 +985,6 @@
 		<string>Mac-E43C1C25D4880AD6</string>
 		<key>BoardManufacturer</key>
 		<string>Apple Inc.</string>
-		<key>BoardSerialNumber</key>
-		<string>XX-MASKED-XX</string>
 		<key>BoardType</key>
 		<integer>10</integer>
 		<key>BoardVersion</key>
@@ -1059,10 +1037,6 @@
 		<string>0x02</string>
 		<key>ProductName</key>
 		<string>MacBookPro12,1</string>
-		<key>SerialNumber</key>
-		<string>XX-MASKED-XX</string>
-		<key>SmUUID</key>
-		<string>XX-MASKED-XX</string>
 		<key>Trust</key>
 		<true/>
 		<key>Version</key>
@@ -1070,8 +1044,6 @@
 	</dict>
 	<key>SystemParameters</key>
 	<dict>
-		<key>CustomUUID</key>
-		<string>XX-MASKED-XX</string>
 		<key>InjectKexts</key>
 		<string>Detect</string>
 	</dict>

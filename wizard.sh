@@ -7,7 +7,7 @@ downloads=Downloads
 local_kexts_dir=Kexts
 kexts_dir=$downloads/Kexts
 
-kexts_exceptions="Sensors|FakePCIID_BCM57XX|FakePCIID_Intel_GbX|FakePCIID_Intel_HDMI|FakePCIID_Intel_HD_Graphics|FakePCIID_XHCIMux|FakePCIID_AR9280_as_AR946x|BrcmFirmwareData|PatchRAM.kext|NonPatchRAM2.kext|PS2"
+kexts_exceptions="FakePCIID_BCM57XX|FakePCIID_Intel_GbX|FakePCIID_Intel_HDMI|FakePCIID_Intel_HD_Graphics|FakePCIID_XHCIMux|FakePCIID_AR9280_as_AR946x|BrcmFirmwareData|PatchRAM.kext|NonPatchRAM2.kext|PS2"
 
 tools_dir=$downloads/Tools
 
@@ -35,6 +35,7 @@ function showOptions() {
     echo "--download-requirements,  Download required kexts, hotpatches and tools."
     echo "--install-downloads,  Install kext(s) and tool(s)."
     echo "--install-config,  Install the config to EFI/CLOVER."
+    echo "--install-theme,  Install custom theme to EFI/CLOVER."
     echo "--update-config,  Update the existing config in EFI/CLOVER."
     echo "--update-kernelcache,  Update kernel cache."
     echo "-i,  inlude custom kexts while using --download-requirements option."

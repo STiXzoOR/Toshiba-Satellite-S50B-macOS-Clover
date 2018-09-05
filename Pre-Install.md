@@ -112,5 +112,25 @@ Change the following settings before you boot into the macOS installer:
 * Boot → Fast Boot : Disabled
 * Boot → Secure Boot → OS Type : Other OS
 
+## Step 6 - Patching BIOS
+
+Since macOS Yosemite, Apple raised the minimum stolen memory in the AppleIntelBDWGraphicsFramebuffer binary. Kernel panic will happen if the DVMT pre-allocated memory in BIOS settings is lower than 66MB and the default value of DVMT pre-allocated memory in most laptops BIOS is 32MB. However on laptops, the DVMT pre-allocated value can't be changed through BIOS so you have to patch it by following the steps below.
+
+* 1) Prepare a USB stick and format it with FAT32 filesystem. Download [this](http://www.firewolf.science/wp-content/uploads/2015/04/EFI-shell.zip) EFI shell and you can find a folder named BOOT after extracting. Copy this BOOT folder to your USB stick.
+
+* 2) Download [Universal BIOS Backup Toolkit](http://m.majorgeeks.com/files/details/universal_bios_backup_toolkit.html) (Windows version only). Run it as an admin and then press READ. Wait until it has finished and then press BACKUP and save it as BIOS.rom.
+
+* 3) Download [UEFITools](https://github.com/LongSoft/UEFITool/releases) and open your BIOS file that you saved previously. Find the module labeled with SetupUtility and extract the PE32 image section﻿ in this module as a binary file.
+
+* 4) Download [Universal IFR Extractor﻿](https://github.com/LongSoft/Universal-IFR-Extractor/releases) (Windows version only). Next, open the Universal IFR Extractor and load the binary file you just extracted from UEFITools and click Extract to save the BIOS settings in plain text format.
+
+* 5) Now open the extracted setup IFR.txt and find the keyword "DVMT". And you can find the variable representing DVMT pre-allocated memory and its values. In my case it was 0x18C. We are gone change it's value to 96MB which is the 0x3. Remember those two numbers.
+
+* 6) Reboot your system and boot into EFI Shell using the USB you created previously.
+
+* 7) Type in EFI Shell: setup_var 0x18C 0x3 and press enter. 
+
+* 8) Reboot system.
+
 All done! You can now boot into the macOS installer.
 Checkout how to install macOS on a mac [here](https://support.apple.com/en-us/HT204904).

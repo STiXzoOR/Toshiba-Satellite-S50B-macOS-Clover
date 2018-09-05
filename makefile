@@ -5,7 +5,6 @@
 
 BUILDDIR=./Build
 
-IASLOPTS=-vw 2095 -vw 2008
 IASL=iasl
 
 HACK=$(BUILDDIR)/SSDT-HACK.aml
@@ -14,7 +13,7 @@ HACK=$(BUILDDIR)/SSDT-HACK.aml
 all: $(HACK)
 	
 $(BUILDDIR)/%.aml : Hotpatch/%.dsl
-	$(IASL) $(IASLOPTS) -p $@ $<
+	$(IASL) -p $@ $<
 	
 .PHONY: clean
 clean:
