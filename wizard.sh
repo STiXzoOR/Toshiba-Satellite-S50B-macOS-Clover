@@ -34,6 +34,7 @@ fi
 function showOptions() {
     echo "--download-requirements,  Download required kexts, hotpatches and tools."
     echo "--install-downloads,  Install kext(s) and tool(s)."
+    echo "--install--initial-config,  Install the initial config to EFI/CLOVER."
     echo "--install-config,  Install the config to EFI/CLOVER."
     echo "--install-theme,  Install custom theme to EFI/CLOVER."
     echo "--update-config,  Update the existing config in EFI/CLOVER."
