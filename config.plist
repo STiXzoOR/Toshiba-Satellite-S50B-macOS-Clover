@@ -244,6 +244,7 @@
 			<string>SSDT.aml</string>
 			<string>SSDT-XCPM.aml</string>
 			<string>SSDT-PluginType1.aml</string>
+			<string>SSDT-DDA.aml</string>
 		</array>
 		<key>DropTables</key>
 		<array>
@@ -272,7 +273,7 @@
 	<key>Boot</key>
 	<dict>
 		<key>Arguments</key>
-		<string>-v abm_firstpolldelay=16000 dart=0</string>
+		<string>dart=0 kext-dev-mode=1 abm_firstpolldelay=16000 -v</string>
 		<key>DefaultVolume</key>
 		<string>MacOS</string>
 		<key>NeverHibernate</key>
@@ -476,7 +477,7 @@
 						<key>Disabled</key>
 						<false/>
 						<key>Key</key>
-						<string>hda-gfx</string>
+						<string>#hda-gfx</string>
 						<key>Value</key>
 						<string>onboard-1</string>
 					</dict>
@@ -636,6 +637,33 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
+				<string>Intel HDEF</string>
+				<key>CustomProperties</key>
+				<array>
+					<dict>
+						<key>Disabled</key>
+						<false/>
+						<key>Key</key>
+						<string>layout-id</string>
+						<key>Value</key>
+						<data>
+						AgAAAA==
+						</data>
+					</dict>
+					<dict>
+						<key>Disabled</key>
+						<false/>
+						<key>Key</key>
+						<string>#hda-gfx</string>
+						<key>Value</key>
+						<string>onboard-1</string>
+					</dict>
+				</array>
+				<key>PciAddr</key>
+				<string>00:1b.00</string>
+			</dict>
+			<dict>
+				<key>Comment</key>
 				<string>Intel HDMI HDA</string>
 				<key>CustomProperties</key>
 				<array>
@@ -653,7 +681,7 @@
 						<key>Disabled</key>
 						<false/>
 						<key>Key</key>
-						<string>hda-gfx</string>
+						<string>#hda-gfx</string>
 						<key>Value</key>
 						<string>onboard-1</string>
 					</dict>
@@ -662,11 +690,6 @@
 				<string>00:03.00</string>
 			</dict>
 		</array>
-		<key>Audio</key>
-		<dict>
-			<key>Inject</key>
-			<integer>2</integer>
-		</dict>
 		<key>USB</key>
 		<dict>
 			<key>AddClockID</key>
@@ -985,6 +1008,8 @@
 		<string>Mac-E43C1C25D4880AD6</string>
 		<key>BoardManufacturer</key>
 		<string>Apple Inc.</string>
+		<key>BoardSerialNumber</key>
+		<string>XX-MASKED-XX</string>
 		<key>BoardType</key>
 		<integer>10</integer>
 		<key>BoardVersion</key>
@@ -1037,6 +1062,10 @@
 		<string>0x02</string>
 		<key>ProductName</key>
 		<string>MacBookPro12,1</string>
+		<key>SerialNumber</key>
+		<string>XX-MASKED-XX</string>
+		<key>SmUUID</key>
+		<string>XX-MASKED-XX</string>
 		<key>Trust</key>
 		<true/>
 		<key>Version</key>
@@ -1044,6 +1073,8 @@
 	</dict>
 	<key>SystemParameters</key>
 	<dict>
+		<key>CustomUUID</key>
+		<string>XX-MASKED-XX</string>
 		<key>InjectKexts</key>
 		<string>Detect</string>
 	</dict>
