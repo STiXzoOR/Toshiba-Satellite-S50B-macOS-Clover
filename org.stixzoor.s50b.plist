@@ -30,13 +30,10 @@
 	</dict>
 	<key>Exceptions</key>
 	<array>
-		<string>Sensors</string>
 		<string>BrcmFirmwareData</string>
 		<string>PatchRAM.kext</string>
 		<string>NonPatchRAM2.kext</string>
-		<string>PS2</string>
 		<string>SMCLightSensor</string>
-		<string>SMCProcessor</string>
 		<string>AppleIntelKBLGraphics</string>
 		<string>BroadcomWiFiInjector</string>
 		<string>WhateverName</string>
