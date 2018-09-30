@@ -2,7 +2,6 @@
 config_UNMASKED.plist
 Kexts/AppleHDA*
 Build/*.aml
-Downloads/Kexts
-Downloads/Tools
+Downloads/*
 Hotpatch/Downloads
 macos-tools
