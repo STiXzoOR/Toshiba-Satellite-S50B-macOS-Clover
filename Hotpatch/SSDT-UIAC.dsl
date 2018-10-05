@@ -18,15 +18,6 @@ DefinitionBlock ("", "SSDT", 2, "hack", "usb", 0)
         // "RehabManConFiguration"
         Name(RMCF, Package()
         {
-            // USB Power Properties for High Sierra (using USBInjectAll injection)
-            "AppleBusPowerControllerUSB", Package()
-            {
-                // these values are for MacBookPro12,1 values...
-                "kUSBSleepPortCurrentLimit", 2100,
-                "kUSBSleepPowerSupply", 2600,
-                "kUSBWakePortCurrentLimit", 2100,
-                "kUSBWakePowerSupply", 3200,
-            },
             // XHC overrides for 9-series boards
             "8086_9cb1", Package()
             {

@@ -169,13 +169,13 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>Change Method(UPC,0,N) to XUPC</string>
+					<string>Change Method(UPC,0,S) to XUPC</string>
 					<key>Disabled</key>
 					<true/>
 					<key>Find</key>
-					<data>X1VQQwA=</data>
+					<data>X1VQQwg=</data>
 					<key>Replace</key>
-					<data>WFVQQwA=</data>
+					<data>WFVQQwg=</data>
 				</dict>
 			</array>
 		</dict>
@@ -693,8 +693,6 @@
 				<false/>
 				<key>Find</key>
 				<data>RiV1VCUwNHgA</data>
-				<key>InfoPlistPatch</key>
-				<false/>
 				<key>Name</key>
 				<string>com.apple.driver.AppleBacklight</string>
 				<key>Replace</key>
@@ -707,8 +705,6 @@
 				<false/>
 				<key>Find</key>
 				<data>ixnUEQ==</data>
-				<key>InfoPlistPatch</key>
-				<false/>
 				<key>Name</key>
 				<string>com.apple.driver.AppleHDA</string>
 				<key>Replace</key>
@@ -721,8 +717,6 @@
 				<false/>
 				<key>Find</key>
 				<data>gxnUEQ==</data>
-				<key>InfoPlistPatch</key>
-				<false/>
 				<key>Name</key>
 				<string>com.apple.driver.AppleHDA</string>
 				<key>Replace</key>
@@ -735,8 +729,6 @@
 				<false/>
 				<key>Find</key>
 				<data>a3Bzaes=</data>
-				<key>InfoPlistPatch</key>
-				<false/>
 				<key>Name</key>
 				<string>com.apple.driver.AppleHDA</string>
 				<key>Replace</key>
@@ -749,8 +741,6 @@
 				<false/>
 				<key>Find</key>
 				<data>QcYGAEiLu2g=</data>
-				<key>InfoPlistPatch</key>
-				<false/>
 				<key>Name</key>
 				<string>com.apple.driver.AppleHDA</string>
 				<key>Replace</key>
@@ -763,8 +753,6 @@
 				<false/>
 				<key>Find</key>
 				<data>QcaGQwEAAAA=</data>
-				<key>InfoPlistPatch</key>
-				<false/>
 				<key>Name</key>
 				<string>com.apple.driver.AppleHDA</string>
 				<key>Replace</key>
@@ -777,12 +765,22 @@
 				<false/>
 				<key>Find</key>
 				<data>QcYGAEmLvCQ=</data>
-				<key>InfoPlistPatch</key>
-				<false/>
 				<key>Name</key>
 				<string>com.apple.driver.AppleHDA</string>
 				<key>Replace</key>
 				<data>QcYGAUmLvCQ=</data>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>Realtek Inc. SD Card Reader - pci14e4,16bc -&gt; pci10ec,5229</string>
+				<key>Disabled</key>
+				<false/>
+				<key>Find</key>
+				<data>cGNpMTRlNCwxNmJj</data>
+				<key>Name</key>
+				<string>com.apple.driver.AppleSDXC</string>
+				<key>Replace</key>
+				<data>cGNpMTBlYyw1MjI5</data>
 			</dict>
 		</array>
 	</dict>

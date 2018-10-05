@@ -20,12 +20,9 @@ DefinitionBlock ("", "SSDT", 2, "hack", "S50B", 0)
     }
     
     #define NO_DEFINITIONBLOCK
-    //#include "Downloads/SSDT-IGPU.dsl"
     #include "Downloads/SSDT-PNLF.dsl"
     #include "Downloads/SSDT-DEHCI.dsl"
     #include "Downloads/SSDT-XOSI.dsl"
-    //#include "Downloads/SSDT-HDEF.dsl"
-    //#include "Downloads/SSDT-HDAU.dsl"
     #include "SSDT-GPRW.dsl"
     #include "SSDT-PS2K.dsl"
     #include "SSDT-UIAC.dsl"
