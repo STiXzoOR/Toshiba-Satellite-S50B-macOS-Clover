@@ -15,6 +15,9 @@ hotpatch_dir=$repo_dir/Hotpatch/Downloads
 themes_dir=$repo_dir/Themes
 repo_plist=$repo_dir/org.stixzoor.s50b.plist
 
+deprecated_plist=org.stixzoor.deprecated.plist
+essentials_plist=org.stixzoor.essentials.plist
+
 source $macos_tools/_hack_cmds.sh
 
 case "$1" in
