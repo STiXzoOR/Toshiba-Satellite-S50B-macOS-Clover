@@ -18,7 +18,6 @@ $(BUILDDIR)/%.aml : Hotpatch/%.dsl
 .PHONY: clean
 clean:
 	rm -f $(BUILDDIR)/*.aml
-	rm -f AppleHDA_CX20756.kext
 
 .PHONY: install
 install: $(HACK)

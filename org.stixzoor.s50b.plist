@@ -26,6 +26,7 @@
 			<string>os-x-brcmpatchram</string>
 			<string>os-x-eapd-codec-commander</string>
 			<string>os-x-usb-inject-all</string>
+			<string>applebacklightfixup</string>
 		</array>
 	</dict>
 	<key>Exceptions</key>
@@ -40,6 +41,7 @@
 		<string>smc</string>
 		<string>rtc</string>
 		<string>libaistat</string>
+		<string>README.md</string>
 	</array>
 	<key>Codec</key>
 	<string>CX20756</string>
