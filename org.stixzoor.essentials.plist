@@ -13,6 +13,7 @@
 		<string>VoodooPS2Controller.kext</string>
 		<string>ApplePS2SmartTouchPad.kext</string>
 		<string>AppleBacklightFixup.kext</string>
+		<string>USBInjectAll.kext</string>
 	</array>
 </dict>
 </plist>
