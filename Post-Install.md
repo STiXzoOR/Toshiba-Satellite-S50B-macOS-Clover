@@ -67,7 +67,14 @@ To install the pre-configured config.plst to EFI, in Terminal:
 ./wizard.sh --install-config
 ```
 
-## Step 4 - ACPI Patches
+## Step 4 - Custom Theme
+
+To install the custom theme to EFI, in Terminal:
+```
+./wizard.sh --install-theme
+```
+
+## Step 5 - ACPI Patches
 
 ##### To finish the setup, we need a correctly patched ACPI, in Terminal:
 ```
