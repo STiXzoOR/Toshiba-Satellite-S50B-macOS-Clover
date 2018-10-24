@@ -1,6 +1,6 @@
 .DS_Store
 config_UNMASKED.plist
-Kexts/.DS_Store
+Build/.DS_Store
 Build/*.aml
 Build/*.kext
 Downloads/*
