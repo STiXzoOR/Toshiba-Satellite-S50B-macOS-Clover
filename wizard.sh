@@ -10,8 +10,6 @@ if [[ ! -d $macos_tools ]]; then
 fi
 
 themes_dir=$repo_dir/Themes
-repo_plist=$repo_dir/org.stixzoor.s50b.plist
-config_plist=$repo_dir/config.plist
 config_install_plist=$repo_dir/config_install.plist
 
 source $macos_tools/_hack_cmds.sh
