@@ -25,7 +25,7 @@ DefinitionBlock ("", "SSDT", 2, "hack", "CX20756", 0)
                     "On Init", ">y", 
                     "On Sleep", ">n", 
                     "On Wake", ">y",
-                }
+                },
 
             },
             "Perform Reset", ">n", 
