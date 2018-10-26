@@ -189,24 +189,6 @@
 				<key>Author</key>
 				<string>RehabMan</string>
 				<key>Repo</key>
-				<string>os-x-usb-inject-all</string>
-				<key>Installations</key>
-				<dict>
-					<key>Kexts</key>
-					<array>
-						<dict>
-							<key>Name</key>
-							<string>USBInjectAll.kext</string>
-							<key>Essential</key>
-							<true/>
-						</dict>
-					</array>
-				</dict>
-			</dict>
-			<dict>
-				<key>Author</key>
-				<string>RehabMan</string>
-				<key>Repo</key>
 				<string>os-x-eapd-codec-commander</string>
 				<key>Installations</key>
 				<dict>
@@ -261,6 +243,7 @@
 			<string>SSDT-DEHCI.dsl</string>
 			<string>SSDT-HDEF.dsl</string>
 			<string>SSDT-HDAU.dsl</string>
+			<string>SSDT-XHC.dsl</string>
 		</array>
 	</dict>
 	<key>Local Installations</key>
@@ -287,18 +270,8 @@
 	</dict>
 	<key>Deprecated</key>
 	<dict>
-		<key>Override Defaults</key>
-		<true/>
 		<key>Kexts</key>
 		<array>
-			<string>FakeSMC.kext</string>
-			<string>ACPIBatteryManager.kext</string>
-			<string>FakePCIID.kext</string>
-			<string>FakePCIID_Intel_HD_Graphics.kext</string>
-			<string>FakePCIID_Intel_HDMI_Audio.kext</string>
-			<string>FakePCIID_Broadcom_WiFi.kext</string>
-			<string>IntelGraphicsFixup.kext</string>
-			<string>AppleBacklightInjector.kext</string>
 			<string>AppleHDA_CX20756.kext</string>
 		</array>
 	</dict>

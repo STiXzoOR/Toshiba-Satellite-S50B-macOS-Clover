@@ -30,10 +30,11 @@ DefinitionBlock ("", "SSDT", 2, "hack", "S50B", 0)
     #include "Downloads/SSDT-HDEF.dsl"
     #include "Downloads/SSDT-HDAU.dsl"
     #include "Downloads/SSDT-DEHCI.dsl"
+    #include "Downloads/SSDT-XHC.dsl"
     #include "Downloads/SSDT-XOSI.dsl"
     #include "SSDT-GPRW.dsl"
     #include "SSDT-PS2K.dsl"
-    #include "SSDT-UIAC.dsl"
+    #include "SSDT-UPC.dsl"
     #include "SSDT-CX20756.dsl"
 }
 //EOF
