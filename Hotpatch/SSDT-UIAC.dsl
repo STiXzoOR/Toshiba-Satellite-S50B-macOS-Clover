@@ -4,13 +4,6 @@
 DefinitionBlock ("", "SSDT", 2, "hack", "usb", 0)
 {
 #endif
-
-//
-// USB Power Propertes for Sierra
-//
-// Note: Only used when using an SMBIOS without power properties
-//  in IOUSBHostFamily Info.plist
-//
     // "USBInjectAllConfiguration" : override settings for USBInjectAll.kext
     Device(UIAC)
     {
