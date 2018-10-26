@@ -1,40 +1,37 @@
 // CodecCommander.kext configuration to fix external mic issues
 
 #ifndef NO_DEFINITIONBLOCK
-DefinitionBlock ("", "SSDT", 2, "hack", "CX20756", 0)
+DefinitionBlock ("", "SSDT", 1, "hack", "CX20751/2", 0)
 {
 #endif
-    External(_SB.PCI0.HDEF, DeviceObj)
-    Name(_SB.PCI0.HDEF.RMCF, Package(0x02)
+    Name(_SB.PCI0.HDEF.RMCF, Package()
     {
-        "CodecCommander", Package (0x0C)
+        "CodecCommander", Package()
         {
-            "Custom Commands", Package (0x03)
+            "Custom Commands", Package()
             {
-                Package (0x00) {}, 
-                Package (0x08)
+                Package(){}, // signifies Array instead of Dictionary
+                Package()
                 {
-                    "Command", Buffer (0x04) { 0x01, 0x97, 0x07, 0x24 }, 
-                    "On Init", ">y", 
-                    "On Sleep", ">n", 
-                    "On Wake", ">y"
-                }, 
-
-                Package (0x08)
+                    // 0x19 SET_PIN_WIDGET_CONTROL 0x24
+                    "Command", Buffer() { 0x01, 0x97, 0x07, 0x24 },
+                    "On Init", ">y",
+                    "On Sleep", ">n",
+                    "On Wake", ">y",
+                },
+                
+                Package ()
                 {
                     "Command", Buffer (0x04) { 0x01, 0xA7, 0x07, 0x20 }, 
                     "On Init", ">y", 
                     "On Sleep", ">n", 
-                    "On Wake", ">y"
+                    "On Wake", ">y",
                 }
-            }, 
 
+            },
             "Perform Reset", ">n", 
             "Perform Reset on External Wake", ">n", 
-            "Send Delay", 0x0A, 
-            "Sleep Nodes", ">n", 
-            "Update Nodes", ">n"
-        }
+        },
     })
 #ifndef NO_DEFINITIONBLOCK
 }
