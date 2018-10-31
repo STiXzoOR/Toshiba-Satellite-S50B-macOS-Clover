@@ -92,6 +92,24 @@
 				<key>Author</key>
 				<string>acidanthera</string>
 				<key>Repo</key>
+				<string>AppleALC</string>
+				<key>Installations</key>
+				<dict>
+					<key>Kexts</key>
+					<array>
+						<dict>
+							<key>Name</key>
+							<string>AppleALC.kext</string>
+							<key>Essential</key>
+							<true/>
+						</dict>
+					</array>
+				</dict>
+			</dict>
+			<dict>
+				<key>Author</key>
+				<string>acidanthera</string>
+				<key>Repo</key>
 				<string>MaciASL</string>
 				<key>Installations</key>
 				<dict>
@@ -253,12 +271,6 @@
 			<dict>
 				<key>Name</key>
 				<string>ApplePS2SmartTouchPad.kext</string>
-				<key>Essential</key>
-				<true/>
-			</dict>
-			<dict>
-				<key>Name</key>
-				<string>AppleALC.kext</string>
 				<key>Essential</key>
 				<true/>
 			</dict>
