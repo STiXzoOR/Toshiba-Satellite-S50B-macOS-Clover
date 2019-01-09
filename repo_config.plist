@@ -92,6 +92,24 @@
 				<key>Author</key>
 				<string>acidanthera</string>
 				<key>Repo</key>
+				<string>BT4LEContiunityFixup</string>
+				<key>Installations</key>
+				<dict>
+					<key>Kexts</key>
+					<array>
+						<dict>
+							<key>Name</key>
+							<string>BT4LEContiunityFixup.kext</string>
+							<key>Essential</key>
+							<true/>
+						</dict>
+					</array>
+				</dict>
+			</dict>
+			<dict>
+				<key>Author</key>
+				<string>acidanthera</string>
+				<key>Repo</key>
 				<string>AppleALC</string>
 				<key>Installations</key>
 				<dict>
@@ -189,24 +207,6 @@
 				<key>Author</key>
 				<string>RehabMan</string>
 				<key>Repo</key>
-				<string>applebacklightfixup</string>
-				<key>Installations</key>
-				<dict>
-					<key>Kexts</key>
-					<array>
-						<dict>
-							<key>Name</key>
-							<string>AppleBacklightFixup.kext</string>
-							<key>Essential</key>
-							<true/>
-						</dict>
-					</array>
-				</dict>
-			</dict>
-			<dict>
-				<key>Author</key>
-				<string>RehabMan</string>
-				<key>Repo</key>
 				<string>os-x-eapd-codec-commander</string>
 				<key>Installations</key>
 				<dict>
@@ -285,6 +285,7 @@
 		<key>Kexts</key>
 		<array>
 			<string>AppleHDA_CX20756.kext</string>
+			<string>AppleBacklightFixup.kext</string>
 		</array>
 	</dict>
 </dict>
