@@ -236,15 +236,6 @@
 				</dict>
 			</dict>
 		</array>
-		<key>Hotpatch</key>
-		<array>
-			<string>SSDT-PNLF.dsl</string>
-			<string>SSDT-XOSI.dsl</string>
-			<string>SSDT-DEHCI.dsl</string>
-			<string>SSDT-HDEF.dsl</string>
-			<string>SSDT-HDAU.dsl</string>
-			<string>SSDT-XHC.dsl</string>
-		</array>
 	</dict>
 	<key>Local Installations</key>
 	<dict>
