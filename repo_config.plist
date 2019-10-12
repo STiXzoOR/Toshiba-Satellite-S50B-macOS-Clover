@@ -92,6 +92,24 @@
 				<key>Author</key>
 				<string>acidanthera</string>
 				<key>Repo</key>
+				<string>BT4LEContinuityFixup</string>
+				<key>Installations</key>
+				<dict>
+					<key>Kexts</key>
+					<array>
+						<dict>
+							<key>Name</key>
+							<string>BT4LEContinuityFixup.kext</string>
+							<key>Essential</key>
+							<true/>
+						</dict>
+					</array>
+				</dict>
+			</dict>
+			<dict>
+				<key>Author</key>
+				<string>acidanthera</string>
+				<key>Repo</key>
 				<string>AppleALC</string>
 				<key>Installations</key>
 				<dict>
@@ -173,14 +191,14 @@
 						<dict>
 							<key>Name</key>
 							<string>BrcmPatchRAM2.kext</string>
-						</dict>
-						<dict>
-							<key>Name</key>
-							<string>BrcmNonPatchRAM2.kext</string>
+							<key>Essential</key>
+							<true/>
 						</dict>
 						<dict>
 							<key>Name</key>
 							<string>BrcmFirmwareRepo.kext</string>
+							<key>Essential</key>
+							<true/>
 						</dict>
 					</array>
 				</dict>
