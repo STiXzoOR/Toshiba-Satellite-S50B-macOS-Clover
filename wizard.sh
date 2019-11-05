@@ -23,6 +23,8 @@ helper_plist=$system_dir/$helper_load
 source $macos_tools/_hack_cmds.sh
 
 function installMountSystemHelper() {
+    echo "Installing MountSystem helper tool"
+
     sudo cp  $helper_exec /usr/local/bin/
     sudo cp  $helper_plist /Library/LaunchDaemons/
         
@@ -48,7 +50,6 @@ case "$1" in
     ;;
     --install-mount-system-helper)
         if [[ "${OS_Version}" -eq "10.15" ]]; then
-            echo "Installing MountSystem helper tool"
             installMountSystemHelper
         else
             echo "This is only for use in Mac OS Catalina."
