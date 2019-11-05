@@ -81,13 +81,13 @@
 					<array>
 						<dict>
 							<key>Name</key>
-							<string>BrcmPatchRAM2.kext</string>
+							<string>BrcmPatchRAM3.kext</string>
 							<key>Essential</key>
 							<true/>
 						</dict>
 						<dict>
 							<key>Name</key>
-							<string>BrcmFirmwareRepo.kext</string>
+							<string>BrcmBluetoothInjector.kext</string>
 							<key>Essential</key>
 							<true/>
 						</dict>
@@ -275,6 +275,8 @@
 	<dict>
 		<key>Kexts</key>
 		<array>
+			<string>BrcmPatchRAM2.kext</string>
+			<string>BrcmFirmwareRepo.kext</string>
 			<string>AppleHDA_CX20756.kext</string>
 			<string>AppleBacklightFixup.kext</string>
 		</array>
