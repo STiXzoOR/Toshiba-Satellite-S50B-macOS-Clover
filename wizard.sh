@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-OS_Version="${$(sw_vers -productVersion):0:5}"
+os_version="$(sw_vers -productVersion | cut -c1-5)"
 
 repo_dir=$(dirname ${BASH_SOURCE[0]})
 
@@ -43,18 +43,19 @@ case "$1" in
         $0 --install-downloads
     ;;
     --mount-system)
-        if [[ "${OS_Version}" -eq "10.15" ]]; then
+        if [[ "${os_version}" == "10.15" ]]; then
             sudo mount -uw /
-            sudo killall finder
+            sudo killall Finder
         fi
     ;;
     --install-mount-system-helper)
-        if [[ "${OS_Version}" -eq "10.15" ]]; then
+        if [[ "${os_version}" == "10.15" ]]; then
             installMountSystemHelper
         else
             echo "This is only for use in Mac OS Catalina."
             exit 0
         fi
+    ;;
     --install-theme)
         EFI=$($macos_tools/mount_efi.sh)
         themes_dest=$EFI/EFI/CLOVER/themes
