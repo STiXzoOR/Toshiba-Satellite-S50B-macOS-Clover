@@ -15,25 +15,19 @@ themes_dir=$repo_dir/Themes
 system_dir=$repo_dir/System
 config_install_plist=$repo_dir/config_install.plist
 
-helper="MountSystem"
-helper_load="com.stixzoor.MountSystem.plist"
-helper_exec=$system_dir/$helper
-helper_plist=$system_dir/$helper_load
+helper="com.stixzoor.MountSystem.plist"
+helper_plist=$system_dir/$helper
 
 source $macos_tools/_hack_cmds.sh
 
 function installMountSystemHelper() {
     echo "Installing MountSystem helper tool"
 
-    sudo cp  $helper_exec /usr/local/bin/
-    sudo cp  $helper_plist /Library/LaunchDaemons/
-        
-    sudo chmod 755 /usr/local/bin/$helper
-    sudo chown $USER:admin /usr/local/bin/$helper
-    sudo chmod 644 /Library/LaunchDaemons/$helper_load
-    sudo chown root:wheel /Library/LaunchDaemons/$helper_load
+    sudo cp -f $helper_plist /Library/LaunchDaemons/
+    sudo chmod 644 /Library/LaunchDaemons/$helper
+    sudo chown root:wheel /Library/LaunchDaemons/$helper
 
-    sudo launchctl load /Library/LaunchDaemons/$helper_load
+    sudo launchctl load /Library/LaunchDaemons/$helper
 }
 
 case "$1" in

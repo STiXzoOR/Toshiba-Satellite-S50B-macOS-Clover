@@ -1,4 +1,0 @@
-#!/bin/sh
-
-sudo mount -uw /
-sudo killall Finder
