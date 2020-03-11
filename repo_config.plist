@@ -152,24 +152,6 @@
 				<key>Author</key>
 				<string>acidanthera</string>
 				<key>Repo</key>
-				<string>VoodooPS2</string>
-				<key>Installations</key>
-				<dict>
-					<key>Kexts</key>
-					<array>
-						<dict>
-							<key>Name</key>
-							<string>VoodooPS2Controller.kext</string>
-							<key>Essential</key>
-							<true/>
-						</dict>
-					</array>
-				</dict>
-			</dict>
-			<dict>
-				<key>Author</key>
-				<string>acidanthera</string>
-				<key>Repo</key>
 				<string>MaciASL</string>
 				<key>Installations</key>
 				<dict>
@@ -178,6 +160,22 @@
 						<dict>
 							<key>Name</key>
 							<string>MaciASL.app</string>
+						</dict>
+					</array>
+				</dict>
+			</dict>
+			<dict>
+				<key>Author</key>
+				<string>acidanthera</string>
+				<key>Repo</key>
+				<string>IOJones</string>
+				<key>Installations</key>
+				<dict>
+					<key>Apps</key>
+					<array>
+						<dict>
+							<key>Name</key>
+							<string>IOJones.app</string>
 						</dict>
 					</array>
 				</dict>
@@ -275,6 +273,7 @@
 	<dict>
 		<key>Kexts</key>
 		<array>
+			<string>VoodooPS2Controller.kext</string>
 			<string>BrcmPatchRAM2.kext</string>
 			<string>BrcmFirmwareRepo.kext</string>
 			<string>AppleHDA_CX20756.kext</string>
