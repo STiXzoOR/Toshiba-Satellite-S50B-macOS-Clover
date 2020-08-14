@@ -1,4 +1,4 @@
-// Custom configuration for Toshiba Sattelite S50B-N-15 laptop
+// Custom configuration for Toshiba Satellite S50B-N-15 laptop
 
 DefinitionBlock ("", "SSDT", 2, "hack", "S50B", 0)
 {
