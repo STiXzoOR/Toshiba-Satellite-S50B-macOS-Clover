@@ -16,16 +16,40 @@
 				<key>Repo</key>
 				<string>build-repo</string>
 				<key>Name</key>
-				<string>VoodooPS2.*RELEASE</string>
+				<string>VoodooInput.*RELEASE</string>
 				<key>Filename</key>
-				<string>VoodooPS2</string>
+				<string>VoodooInput</string>
 				<key>Installations</key>
 				<dict>
 					<key>Kexts</key>
 					<array>
 						<dict>
 							<key>Name</key>
-							<string>VoodooPS2Controller.kext</string>
+							<string>VoodooInput.kext</string>
+							<key>Essential</key>
+							<true/>
+						</dict>
+					</array>
+				</dict>
+			</dict>
+			<dict>
+				<key>Source</key>
+				<string>api</string>
+				<key>Author</key>
+				<string>dortania</string>
+				<key>Repo</key>
+				<string>build-repo</string>
+				<key>Name</key>
+				<string>RealtekRTL8111.*/release</string>
+				<key>Filename</key>
+				<string>RealtekRTL8111</string>
+				<key>Installations</key>
+				<dict>
+					<key>Kexts</key>
+					<array>
+						<dict>
+							<key>Name</key>
+							<string>RealtekRTL8111.kext</string>
 							<key>Essential</key>
 							<true/>
 						</dict>
@@ -86,10 +110,14 @@
 						<dict>
 							<key>Name</key>
 							<string>SMCProcessor.kext</string>
+							<key>Essential</key>
+							<true/>
 						</dict>
 						<dict>
 							<key>Name</key>
 							<string>SMCSuperIO.kext</string>
+							<key>Essential</key>
+							<true/>
 						</dict>
 					</array>
 				</dict>
@@ -216,6 +244,24 @@
 			</dict>
 			<dict>
 				<key>Author</key>
+				<string>BAndysc</string>
+				<key>Repo</key>
+				<string>VoodooPS2</string>
+				<key>Installations</key>
+				<dict>
+					<key>Kexts</key>
+					<array>
+						<dict>
+							<key>Name</key>
+							<string>VoodooPS2Controller.kext</string>
+							<key>Essential</key>
+							<true/>
+						</dict>
+					</array>
+				</dict>
+			</dict>
+			<dict>
+				<key>Author</key>
 				<string>acidanthera</string>
 				<key>Repo</key>
 				<string>BrcmPatchRAM</string>
@@ -321,12 +367,6 @@
 		<array>
 			<dict>
 				<key>Name</key>
-				<string>ApplePS2SmartTouchPad.kext</string>
-				<key>Essential</key>
-				<true/>
-			</dict>
-			<dict>
-				<key>Name</key>
 				<string>CPUFriendDataProvider.kext</string>
 				<key>Essential</key>
 				<true/>
@@ -341,6 +381,7 @@
 	<dict>
 		<key>Kexts</key>
 		<array>
+			<string>ApplePS2SmartTouchPad.kext</string>
 			<string>CodecCommander.kext</string>
 			<string>BrcmPatchRAM2.kext</string>
 			<string>AppleHDA_CX20756.kext</string>
